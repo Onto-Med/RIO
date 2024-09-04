@@ -1,2 +1,14 @@
-# RIO
-Risk Identification Ontology (RIO) provides a framework for risk specification and reasoning.
+# Risk Identification Ontology (RIO)
+
+Critical situations in hospitals arise especially during interdisciplinary cooperation and the use of complex medical technology, for example during surgical procedures or in the perioperative area. In particular, overlooking medically relevant treatment data or an incomplete medical history can lead to incorrect treatment. Within the OntoMedRisk project (funded by the [German Federal Ministry of Education and Research](https://www.bmbf.de)), methods and tools were developed to identify and analyse risks in perioperative processes. The developed software suite is based on the Risk Identification Ontology (RIO), which provides a framework for risk specification and reasoning. RIO utilises the ontological model of the risk notion defined in the [publication](#publication) and is founded on the [General Formal Ontology (GFO)](https://github.com/Onto-Med/GFO).
+
+The starting point of the modelling is the treatment process, which may consist of different treatment phases (*gfo:has_part*). The whole treatment as well as the phases are complex processes (*gfo:Situoid*). The treatment has (*gfo:projects_to*) a temporal extension, the treatment time (*gfo:Chronoid*). At each point in time (*gfo:Time_boundary*) of the treatment, exactly one treatment situation (*gfo:Situation*) exists (*gfo:exists_at*). A point in time of the treatment is a boundary of the treatment time (*gfo:boundary_of*), whereas the corresponding treatment situation is a boundary of the treatment itself. For each treatment phase, specific points in time of risk detection can be defined. The treatment situations existing at these points in time are analysed for the presence of risks. Such situations are called potential risk situations because they do not necessarily contain risks. Situations, and in particular treatment situations, possess different properties (*gfo:Property*). In the context of risk identification, these properties are called Key Performance Indicators (KPI). They can belong to the situation itself, but also to the participants, such as doctors, medical instruments and patients. Such properties are also considered properties of the current treatment situation (*gfo:has_property*). According to the definitions in the [publication](#publication), a particular combination of properties (a composite property) of a potential risk situation (e.g., patient age = 3 months, meningitis vaccination = false and antibiotic prevention = false) may indicate a risk, i.e., could lead to an adverse situation.
+
+## Publication
+
+> **Uciteli A, Neumann J, Tahar K, Saleh K, Stucke S, Faulbrück-Röhr S, Kaeding A, Specht M, Schmidt T, Neumuth T, Besting A, Stegemann D, Portheine F, Herre H**. Ontology-based specification, identification and analysis of perioperative risks. Journal of Biomedical Semantics. 2017;8:36. https://doi.org/10.1186/s13326-017-0147-8
+
+## See also
+
+* [Project website](http://www.ontomedrisk.de/)
+* [Further publications](https://www.uniklinikum-jena.de/gbit/Aufbauorganisation/Anwendungsforschung+/OntoMedRisk.pdf?rewrite_engine=id&no301=1)
