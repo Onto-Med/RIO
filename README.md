@@ -60,3 +60,4 @@ Situations that fulfil this rule (i.e., required KPIs are within the defined ran
 
 * [Project website](http://www.ontomedrisk.de/)
 * [Further publications](https://www.uniklinikum-jena.de/gbit/Aufbauorganisation/Anwendungsforschung+/OntoMedRisk.pdf?rewrite_engine=id&no301=1)
+* [General Formal Ontology (GFO)](https://github.com/Onto-Med/GFO)
