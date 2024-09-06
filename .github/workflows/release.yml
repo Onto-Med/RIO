@@ -1,0 +1,45 @@
+---
+name: Prepare release files
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Download widoco
+        run: wget -q -O widoco.jar https://github.com/dgarijo/Widoco/releases/download/v1.4.25/widoco-1.4.25-jar-with-dependencies_JDK-17.jar
+      - name: Compile documentation
+        run: |
+          java -jar widoco.jar \
+          -ontFile rio.ttl \
+          -outFolder output \
+          -includeAnnotationProperties \
+          -rewriteAll \
+          -includeImportedOntologies \
+          -uniteSections \
+          -noPlaceHolderText
+      - name: Deploy version documentation
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          destination_dir: release/${{ github.event.release.tag_name }}
+      - name: Deploy latest documentation
+        if: '!github.event.release.prerelease'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          destination_dir: release/latest
