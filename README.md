@@ -1,5 +1,7 @@
 # Risk Identification Ontology (RIO)
 
+[![Paper](https://img.shields.io/badge/Paper_DOI-10.1186/s13326--017--0147--8-blue)](https://doi.org/10.1186/s13326-017-0147-8)
+
 Critical situations in hospitals arise especially during interdisciplinary cooperation and the use of complex medical technology, for example during surgical procedures or in the perioperative area.
 In particular, overlooking medically relevant treatment data or an incomplete medical history can lead to incorrect treatment.
 Within the OntoMedRisk project (funded by the [German Federal Ministry of Education and Research](https://www.bmbf.de)), methods and tools were developed to identify and analyse risks in perioperative processes.
