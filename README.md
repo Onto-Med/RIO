@@ -16,7 +16,7 @@ The main difference to the [original version of RIO](https://github.com/Onto-Med
 
 A further simplification is that in GFO-light points in time of a process can be assigned directly to the process itself (see *pointInTimeOf* in **Fig.1**), without a detour via its temporal extension (*gfo:Chronoid*). In addition, some object properties from GFO-light (e.g., *gfo-light:existsIn* and *gfo-light:causes*) could be reused so that it was no longer necessary to define similar properties (*risk_in_phase*, *risk_for_adverse_situation* and *succeeding_situation*) in RIO.
 
-A small example (rio-example.ttl) illustrates the identification (reasoning) of risks for a bacterial infection during cochlear implantation in infants. Five KPIs are defined (as subclasses of the class *KPI*), each of which has a subclass with a property restriction (**Tab. 1**). 
+A small example ([examples/rio-example.ttl](examples/rio-example.ttl)) illustrates the identification (reasoning) of risks for a bacterial infection during cochlear implantation in infants. Five KPIs are defined (as subclasses of the class *KPI*), each of which has a subclass with a property restriction (**Tab. 1**). 
 
 <table>
     <tr><th>KPI class</th><th>KPI subclass</th><th>KPI restriction</th></tr>
