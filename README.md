@@ -2,6 +2,8 @@
 
 [![Paper](https://img.shields.io/badge/Paper_DOI-10.1186/s13326--017--0147--8-blue)](https://doi.org/10.1186/s13326-017-0147-8)
 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
 Critical situations in hospitals arise especially during interdisciplinary cooperation and the use of complex medical technology, for example during surgical procedures or in the perioperative area.
 In particular, overlooking medically relevant treatment data or an incomplete medical history can lead to incorrect treatment.
 Within the OntoMedRisk project (funded by the [German Federal Ministry of Education and Research](https://www.bmbf.de)), methods and tools were developed to identify and analyse risks in perioperative processes.
