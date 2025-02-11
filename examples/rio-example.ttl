@@ -1,0 +1,581 @@
+@prefix : <https://w3id.org/rio/example/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rio: <https://w3id.org/rio> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rio-example: <https://w3id.org/rio/example> .
+@base <https://w3id.org/rio/example/> .
+
+<https://w3id.org/rio/example> rdf:type owl:Ontology ;
+                                owl:versionIRI <https://w3id.org/rio/example/release/2025-02-07> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#qualifiedCardinality
+owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/rio/adverse_situation_probability
+<https://w3id.org/rio/adverse_situation_probability> rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/rio/adverse_situation_severity
+<https://w3id.org/rio/adverse_situation_severity> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/gfo-light/hasSituationPart
+<https://w3id.org/gfo-light/hasSituationPart> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/gfo-light/hasTime
+<https://w3id.org/gfo-light/hasTime> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/gfo-light/processPartOf
+<https://w3id.org/gfo-light/processPartOf> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/gfo-light/resultsFrom
+<https://w3id.org/gfo-light/resultsFrom> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/gfo-light/temporalPartOf
+<https://w3id.org/gfo-light/temporalPartOf> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/gfo-light/booleanValue
+<https://w3id.org/gfo-light/booleanValue> rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/gfo-light/decimalValue
+<https://w3id.org/gfo-light/decimalValue> rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/gfo-light/stringValue
+<https://w3id.org/gfo-light/stringValue> rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/rio/Adverse_situation
+<https://w3id.org/rio/Adverse_situation> rdf:type owl:Class .
+
+
+###  https://w3id.org/rio/KPI
+<https://w3id.org/rio/KPI> rdf:type owl:Class .
+
+
+###  https://w3id.org/rio/Point_in_time_of_risk_detection
+<https://w3id.org/rio/Point_in_time_of_risk_detection> rdf:type owl:Class .
+
+
+###  https://w3id.org/rio/Risk_situation
+<https://w3id.org/rio/Risk_situation> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://w3id.org/rio/Treatment_situation> .
+
+
+###  https://w3id.org/rio/Treatment
+<https://w3id.org/rio/Treatment> rdf:type owl:Class .
+
+
+###  https://w3id.org/rio/Treatment_phase
+<https://w3id.org/rio/Treatment_phase> rdf:type owl:Class .
+
+
+###  https://w3id.org/rio/Treatment_situation
+<https://w3id.org/rio/Treatment_situation> rdf:type owl:Class .
+
+
+###  https://w3id.org/rio/example/Age_in_months
+:Age_in_months rdf:type owl:Class ;
+               rdfs:subClassOf <https://w3id.org/rio/KPI> .
+
+
+###  https://w3id.org/rio/example/Age_in_months_l_5
+:Age_in_months_l_5 rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( :Age_in_months
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty <https://w3id.org/gfo-light/decimalValue> ;
+                                                                owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                     owl:onDatatype xsd:decimal ;
+                                                                                     owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                                                            ]
+                                                                                                            [ xsd:maxExclusive 5
+                                                                                                            ]
+                                                                                                          )
+                                                                                   ]
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf :Age_in_months .
+
+
+###  https://w3id.org/rio/example/Antibiotic_prevention
+:Antibiotic_prevention rdf:type owl:Class ;
+                       rdfs:subClassOf <https://w3id.org/rio/KPI> .
+
+
+###  https://w3id.org/rio/example/Antibiotic_prevention_e_false
+:Antibiotic_prevention_e_false rdf:type owl:Class ;
+                               owl:equivalentClass [ owl:intersectionOf ( :Antibiotic_prevention
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty <https://w3id.org/gfo-light/booleanValue> ;
+                                                                            owl:hasValue "false"^^xsd:boolean
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ] ;
+                               rdfs:subClassOf :Antibiotic_prevention .
+
+
+###  https://w3id.org/rio/example/Cochlear_implantation
+:Cochlear_implantation rdf:type owl:Class ;
+                       rdfs:subClassOf <https://w3id.org/rio/Treatment> ;
+                       rdfs:label "Cochlear implantation"@en .
+
+
+###  https://w3id.org/rio/example/Dura_mater_infection
+:Dura_mater_infection rdf:type owl:Class ;
+                      rdfs:subClassOf <https://w3id.org/rio/Adverse_situation> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty <https://w3id.org/gfo-light/resultsFrom> ;
+                                        owl:someValuesFrom :Dura_mater_infection_risk_situation
+                                      ] ;
+                      rdfs:label "Dura mater infection"@en ;
+                      <https://w3id.org/rio/adverse_situation_probability> 0.09 ;
+                      <https://w3id.org/rio/adverse_situation_severity> 4 .
+
+
+###  https://w3id.org/rio/example/Dura_mater_infection_risk_situation
+:Dura_mater_infection_risk_situation rdf:type owl:Class ;
+                                     owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                  owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasSituationPart> ;
+                                                                                                  owl:someValuesFrom :Age_in_months_l_5
+                                                                                                ]
+                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasSituationPart> ;
+                                                                                                  owl:someValuesFrom :Ear_structure_e_abnormal
+                                                                                                ]
+                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasSituationPart> ;
+                                                                                                  owl:someValuesFrom :Skull_bone_thickness_le_2
+                                                                                                ]
+                                                                                              )
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasSituationPart> ;
+                                                                                  owl:someValuesFrom :Antibiotic_prevention_e_false
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <https://w3id.org/gfo-light/hasSituationPart> ;
+                                                                                  owl:someValuesFrom :Vaccination_e_false
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ] ;
+                                     rdfs:subClassOf <https://w3id.org/rio/Risk_situation> ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <https://w3id.org/gfo-light/processPartOf> ;
+                                                       owl:someValuesFrom :Indication_phase
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <https://w3id.org/gfo-light/hasTime> ;
+                                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass :Indication_risk_detection_time
+                                                     ] ;
+                                     rdfs:comment "Please check antibiotic administration and vaccination status (pneumococcus, meningococcus and haemophilus influenzae type b)."@en ;
+                                     rdfs:label "Risk situation for dura mater bacteria infection (Meningitis)."@en .
+
+
+###  https://w3id.org/rio/example/Ear_structure
+:Ear_structure rdf:type owl:Class ;
+               rdfs:subClassOf <https://w3id.org/rio/KPI> .
+
+
+###  https://w3id.org/rio/example/Ear_structure_e_abnormal
+:Ear_structure_e_abnormal rdf:type owl:Class ;
+                          owl:equivalentClass [ owl:intersectionOf ( :Ear_structure
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <https://w3id.org/gfo-light/stringValue> ;
+                                                                       owl:hasValue "abnormal"
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] ;
+                          rdfs:subClassOf :Ear_structure .
+
+
+###  https://w3id.org/rio/example/Indication_phase
+:Indication_phase rdf:type owl:Class ;
+                  rdfs:subClassOf <https://w3id.org/rio/Treatment_phase> ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <https://w3id.org/gfo-light/processPartOf> ;
+                                    owl:someValuesFrom :Cochlear_implantation
+                                  ] ;
+                  rdfs:label "Indication phase"@en .
+
+
+###  https://w3id.org/rio/example/Indication_risk_detection_time
+:Indication_risk_detection_time rdf:type owl:Class ;
+                                rdfs:subClassOf <https://w3id.org/rio/Point_in_time_of_risk_detection> ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty <https://w3id.org/gfo-light/temporalPartOf> ;
+                                                  owl:someValuesFrom :Indication_phase
+                                                ] ;
+                                rdfs:label "Indication risk detection time"@en .
+
+
+###  https://w3id.org/rio/example/Skull_bone_thickness
+:Skull_bone_thickness rdf:type owl:Class ;
+                      rdfs:subClassOf <https://w3id.org/rio/KPI> .
+
+
+###  https://w3id.org/rio/example/Skull_bone_thickness_le_2
+:Skull_bone_thickness_le_2 rdf:type owl:Class ;
+                           owl:equivalentClass [ owl:intersectionOf ( :Skull_bone_thickness
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty <https://w3id.org/gfo-light/decimalValue> ;
+                                                                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                             owl:onDatatype xsd:decimal ;
+                                                                                             owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                                                                    ]
+                                                                                                                    [ xsd:maxInclusive 2
+                                                                                                                    ]
+                                                                                                                  )
+                                                                                           ]
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ] ;
+                           rdfs:subClassOf :Skull_bone_thickness .
+
+
+###  https://w3id.org/rio/example/Vaccination
+:Vaccination rdf:type owl:Class ;
+             rdfs:subClassOf <https://w3id.org/rio/KPI> .
+
+
+###  https://w3id.org/rio/example/Vaccination_e_false
+:Vaccination_e_false rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Vaccination
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <https://w3id.org/gfo-light/booleanValue> ;
+                                                                  owl:hasValue "false"^^xsd:boolean
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf :Vaccination .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/rio/example/age_4_pat1
+:age_4_pat1 rdf:type owl:NamedIndividual ,
+                     :Age_in_months ;
+            <https://w3id.org/gfo-light/decimalValue> 4 .
+
+
+###  https://w3id.org/rio/example/age_4_pat5
+:age_4_pat5 rdf:type owl:NamedIndividual ,
+                     :Age_in_months ;
+            <https://w3id.org/gfo-light/decimalValue> 4 .
+
+
+###  https://w3id.org/rio/example/age_5_pat6
+:age_5_pat6 rdf:type owl:NamedIndividual ,
+                     :Age_in_months ;
+            <https://w3id.org/gfo-light/decimalValue> 5 .
+
+
+###  https://w3id.org/rio/example/antibiotic_false_pat1
+:antibiotic_false_pat1 rdf:type owl:NamedIndividual ,
+                                :Antibiotic_prevention ;
+                       <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/antibiotic_false_pat2
+:antibiotic_false_pat2 rdf:type owl:NamedIndividual ,
+                                :Antibiotic_prevention ;
+                       <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/antibiotic_false_pat3
+:antibiotic_false_pat3 rdf:type owl:NamedIndividual ,
+                                :Antibiotic_prevention ;
+                       <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/antibiotic_false_pat5
+:antibiotic_false_pat5 rdf:type owl:NamedIndividual ,
+                                :Antibiotic_prevention ;
+                       <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/antibiotic_false_pat6
+:antibiotic_false_pat6 rdf:type owl:NamedIndividual ,
+                                :Antibiotic_prevention ;
+                       <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/antibiotic_true_pat4
+:antibiotic_true_pat4 rdf:type owl:NamedIndividual ,
+                               :Antibiotic_prevention ;
+                      <https://w3id.org/gfo-light/booleanValue> "true"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/as_pat1
+:as_pat1 rdf:type owl:NamedIndividual ,
+                  :Dura_mater_infection ;
+         <https://w3id.org/gfo-light/resultsFrom> :rs1_pat1 .
+
+
+###  https://w3id.org/rio/example/ci_ind_pat1
+:ci_ind_pat1 rdf:type owl:NamedIndividual ,
+                      :Indication_phase ;
+             <https://w3id.org/gfo-light/processPartOf> :ci_pat1 .
+
+
+###  https://w3id.org/rio/example/ci_ind_pat2
+:ci_ind_pat2 rdf:type owl:NamedIndividual ,
+                      :Indication_phase ;
+             <https://w3id.org/gfo-light/processPartOf> :ci_pat2 .
+
+
+###  https://w3id.org/rio/example/ci_ind_pat3
+:ci_ind_pat3 rdf:type owl:NamedIndividual ,
+                      :Indication_phase ;
+             <https://w3id.org/gfo-light/processPartOf> :ci_pat3 .
+
+
+###  https://w3id.org/rio/example/ci_ind_pat4
+:ci_ind_pat4 rdf:type owl:NamedIndividual ,
+                      :Indication_phase ;
+             <https://w3id.org/gfo-light/processPartOf> :ci_pat4 .
+
+
+###  https://w3id.org/rio/example/ci_ind_pat5
+:ci_ind_pat5 rdf:type owl:NamedIndividual ,
+                      :Indication_phase ;
+             <https://w3id.org/gfo-light/processPartOf> :ci_pat5 .
+
+
+###  https://w3id.org/rio/example/ci_ind_pat6
+:ci_ind_pat6 rdf:type owl:NamedIndividual ,
+                      :Indication_phase ;
+             <https://w3id.org/gfo-light/processPartOf> :ci_pat6 .
+
+
+###  https://w3id.org/rio/example/ci_pat1
+:ci_pat1 rdf:type owl:NamedIndividual ,
+                  :Cochlear_implantation .
+
+
+###  https://w3id.org/rio/example/ci_pat2
+:ci_pat2 rdf:type owl:NamedIndividual ,
+                  :Cochlear_implantation .
+
+
+###  https://w3id.org/rio/example/ci_pat3
+:ci_pat3 rdf:type owl:NamedIndividual ,
+                  :Cochlear_implantation .
+
+
+###  https://w3id.org/rio/example/ci_pat4
+:ci_pat4 rdf:type owl:NamedIndividual ,
+                  :Cochlear_implantation .
+
+
+###  https://w3id.org/rio/example/ci_pat5
+:ci_pat5 rdf:type owl:NamedIndividual ,
+                  :Cochlear_implantation .
+
+
+###  https://w3id.org/rio/example/ci_pat6
+:ci_pat6 rdf:type owl:NamedIndividual ,
+                  :Cochlear_implantation .
+
+
+###  https://w3id.org/rio/example/ear_abnormal_pat2
+:ear_abnormal_pat2 rdf:type owl:NamedIndividual ,
+                            :Ear_structure ;
+                   <https://w3id.org/gfo-light/stringValue> "abnormal" .
+
+
+###  https://w3id.org/rio/example/ear_normal_pat6
+:ear_normal_pat6 rdf:type owl:NamedIndividual ,
+                          :Ear_structure ;
+                 <https://w3id.org/gfo-light/stringValue> "normal" .
+
+
+###  https://w3id.org/rio/example/nrs4_pat4
+:nrs4_pat4 rdf:type owl:NamedIndividual ,
+                    <https://w3id.org/rio/Treatment_situation> ;
+           <https://w3id.org/gfo-light/hasSituationPart> :antibiotic_true_pat4 ,
+                                                         :skull_2_pat4 ,
+                                                         :vaccination_false_pat4 ;
+           <https://w3id.org/gfo-light/hasTime> :risk_det_time_pat4 ;
+           <https://w3id.org/gfo-light/processPartOf> :ci_ind_pat4 .
+
+
+###  https://w3id.org/rio/example/nrs5_pat5
+:nrs5_pat5 rdf:type owl:NamedIndividual ,
+                    <https://w3id.org/rio/Treatment_situation> ;
+           <https://w3id.org/gfo-light/hasSituationPart> :age_4_pat5 ,
+                                                         :antibiotic_false_pat5 ,
+                                                         :vaccination_true_pat5 ;
+           <https://w3id.org/gfo-light/hasTime> :risk_det_time_pat5 ;
+           <https://w3id.org/gfo-light/processPartOf> :ci_ind_pat5 .
+
+
+###  https://w3id.org/rio/example/nrs6_pat6
+:nrs6_pat6 rdf:type owl:NamedIndividual ,
+                    <https://w3id.org/rio/Treatment_situation> ;
+           <https://w3id.org/gfo-light/hasSituationPart> :age_5_pat6 ,
+                                                         :antibiotic_false_pat6 ,
+                                                         :ear_normal_pat6 ,
+                                                         :skull_3_pat6 ,
+                                                         :vaccination_false_pat6 ;
+           <https://w3id.org/gfo-light/hasTime> :risk_det_time_pat6 ;
+           <https://w3id.org/gfo-light/processPartOf> :ci_ind_pat6 .
+
+
+###  https://w3id.org/rio/example/risk_det_time_pat1
+:risk_det_time_pat1 rdf:type owl:NamedIndividual ,
+                             :Indication_risk_detection_time ;
+                    <https://w3id.org/gfo-light/temporalPartOf> :ci_ind_pat1 .
+
+
+###  https://w3id.org/rio/example/risk_det_time_pat2
+:risk_det_time_pat2 rdf:type owl:NamedIndividual ,
+                             :Indication_risk_detection_time ;
+                    <https://w3id.org/gfo-light/temporalPartOf> :ci_ind_pat2 .
+
+
+###  https://w3id.org/rio/example/risk_det_time_pat3
+:risk_det_time_pat3 rdf:type owl:NamedIndividual ,
+                             :Indication_risk_detection_time ;
+                    <https://w3id.org/gfo-light/temporalPartOf> :ci_ind_pat3 .
+
+
+###  https://w3id.org/rio/example/risk_det_time_pat4
+:risk_det_time_pat4 rdf:type owl:NamedIndividual ,
+                             :Indication_risk_detection_time ;
+                    <https://w3id.org/gfo-light/temporalPartOf> :ci_ind_pat4 .
+
+
+###  https://w3id.org/rio/example/risk_det_time_pat5
+:risk_det_time_pat5 rdf:type owl:NamedIndividual ,
+                             :Indication_risk_detection_time ;
+                    <https://w3id.org/gfo-light/temporalPartOf> :ci_ind_pat5 .
+
+
+###  https://w3id.org/rio/example/risk_det_time_pat6
+:risk_det_time_pat6 rdf:type owl:NamedIndividual ,
+                             :Indication_risk_detection_time ;
+                    <https://w3id.org/gfo-light/temporalPartOf> :ci_ind_pat6 .
+
+
+###  https://w3id.org/rio/example/rs1_pat1
+:rs1_pat1 rdf:type owl:NamedIndividual ,
+                   <https://w3id.org/rio/Treatment_situation> ;
+          <https://w3id.org/gfo-light/hasSituationPart> :age_4_pat1 ,
+                                                        :antibiotic_false_pat1 ,
+                                                        :vaccination_false_pat1 ;
+          <https://w3id.org/gfo-light/hasTime> :risk_det_time_pat1 ;
+          <https://w3id.org/gfo-light/processPartOf> :ci_ind_pat1 .
+
+
+###  https://w3id.org/rio/example/rs2_pat2
+:rs2_pat2 rdf:type owl:NamedIndividual ,
+                   <https://w3id.org/rio/Treatment_situation> ;
+          <https://w3id.org/gfo-light/hasSituationPart> :antibiotic_false_pat2 ,
+                                                        :ear_abnormal_pat2 ,
+                                                        :vaccination_false_pat2 ;
+          <https://w3id.org/gfo-light/hasTime> :risk_det_time_pat2 ;
+          <https://w3id.org/gfo-light/processPartOf> :ci_ind_pat2 .
+
+
+###  https://w3id.org/rio/example/rs3_pat3
+:rs3_pat3 rdf:type owl:NamedIndividual ,
+                   <https://w3id.org/rio/Treatment_situation> ;
+          <https://w3id.org/gfo-light/hasSituationPart> :antibiotic_false_pat3 ,
+                                                        :skull_2_pat3 ,
+                                                        :vaccination_false_pat3 ;
+          <https://w3id.org/gfo-light/hasTime> :risk_det_time_pat3 ;
+          <https://w3id.org/gfo-light/processPartOf> :ci_ind_pat3 .
+
+
+###  https://w3id.org/rio/example/skull_2_pat3
+:skull_2_pat3 rdf:type owl:NamedIndividual ,
+                       :Skull_bone_thickness ;
+              <https://w3id.org/gfo-light/decimalValue> 2 .
+
+
+###  https://w3id.org/rio/example/skull_2_pat4
+:skull_2_pat4 rdf:type owl:NamedIndividual ,
+                       :Skull_bone_thickness ;
+              <https://w3id.org/gfo-light/decimalValue> 2 .
+
+
+###  https://w3id.org/rio/example/skull_3_pat6
+:skull_3_pat6 rdf:type owl:NamedIndividual ,
+                       :Skull_bone_thickness ;
+              <https://w3id.org/gfo-light/decimalValue> 3 .
+
+
+###  https://w3id.org/rio/example/vaccination_false_pat1
+:vaccination_false_pat1 rdf:type owl:NamedIndividual ,
+                                 :Vaccination ;
+                        <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/vaccination_false_pat2
+:vaccination_false_pat2 rdf:type owl:NamedIndividual ,
+                                 :Vaccination ;
+                        <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/vaccination_false_pat3
+:vaccination_false_pat3 rdf:type owl:NamedIndividual ,
+                                 :Vaccination ;
+                        <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/vaccination_false_pat4
+:vaccination_false_pat4 rdf:type owl:NamedIndividual ,
+                                 :Vaccination ;
+                        <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/vaccination_false_pat6
+:vaccination_false_pat6 rdf:type owl:NamedIndividual ,
+                                 :Vaccination ;
+                        <https://w3id.org/gfo-light/booleanValue> "false"^^xsd:boolean .
+
+
+###  https://w3id.org/rio/example/vaccination_true_pat5
+:vaccination_true_pat5 rdf:type owl:NamedIndividual ,
+                                :Vaccination ;
+                       <https://w3id.org/gfo-light/booleanValue> "true"^^xsd:boolean .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
