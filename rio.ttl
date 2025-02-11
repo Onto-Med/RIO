@@ -24,6 +24,7 @@
                         dc:modified "2025-02-07" ;
                         dc:title "Risk Identification Ontology (RIO)"@en ;
                         terms:license <http://creativecommons.org/licenses/by/4.0/> ;
+                        bibo:doi "10.5281/zenodo.14851236" ;
                         vann:preferredNamespacePrefix "rio" ;
                         vann:preferredNamespaceURI "https://w3id.org/rio/" ;
                         doap:repository <https://github.com/Onto-Med/RIO> ;
